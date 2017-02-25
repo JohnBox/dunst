@@ -25,10 +25,10 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "dunst.h"
-#include "notification.h"
-#include "settings.h"
-#include "utils.h"
+#include "src/dunst.h"
+#include "src/notification.h"
+#include "src/settings.h"
+#include "src/utils.h"
 
 #define WIDTH 400
 #define HEIGHT 400

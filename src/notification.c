@@ -20,7 +20,7 @@
 #include "rules.h"
 #include "settings.h"
 #include "utils.h"
-#include "x.h"
+#include "x11/x.h"
 
 int next_notification_id = 1;
 
