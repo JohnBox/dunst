@@ -56,7 +56,7 @@ static double get_xft_dpi_value()
                 }
                 XrmDestroyDatabase(xDB);
         }
-
+        printf("Tried to acquire dpi using Xresources(if 0 the operation failed): %f\n", dpi);
         return dpi;
 }
 
@@ -96,6 +96,10 @@ void x_update_screens()
         alloc_screen_ar(n);
 
         for (int i = 0; i < n; i++) {
+                printf("Screen %d\n", i);
+                printf("Position: X: %d Y: %d\n", m[i].x, m[i].y);
+                printf("Resolution: W: %d X: %d\n", m[i].width, m[i].height);
+                printf("Size: mmW: %d mmH: %d\n\n", m[i].mwidth, m[i].mheight);
                 screens[i].dim.x = m[i].x;
                 screens[i].dim.y = m[i].y;
                 screens[i].dim.w = m[i].width;
@@ -108,7 +112,14 @@ void x_update_screens()
 
 static double autodetect_dpi(screen_info *scr)
 {
-        return (double)scr->dim.h * 25.4 / (double)scr->dim.mmh;
+        double dpi = (double)scr->dim.h * 25.4 / (double)scr->dim.mmh;
+        printf("Trying dpi autodetection for screen:\n");
+        printf("Position: X: %d Y: %d\n", scr->dim.x, scr->dim.y);
+        printf("Resolution: W: %d H: %d\n", scr->dim.w, scr->dim.h);
+        printf("Size: mmH: %d\n\n", scr->dim.mmh);
+
+        printf("Calculation result: %f\n\n", dpi);
+        return dpi;
 }
 
 void screen_check_event(XEvent event)
